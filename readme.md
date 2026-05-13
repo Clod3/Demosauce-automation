@@ -1,4 +1,4 @@
-# Proyecto de Automatizacion QA - Jose Montezuma
+# Proyecto de Automatizacion QA - Milani Claudio
 
 ## Descripcion
 
@@ -15,12 +15,20 @@ El objetivo del proyecto es automatizar distintas pruebas funcionales de una apl
 
 ## Instalacion
 
-`git clone https://github.com/Jdmonte4269AP/pre-entrega.git`
+`git clone https://github.com/Clod3/Demosauce-automation`
 
 
 ## Instalacion dependencias
 
 `pip install -r requirements.txt`
 
-## Funcionamiento de las prubeas
-- Test cart: 
+## Cómo ejecutar las pruebas
+
+pytest pre-entrega-final/test_saucedemo.py
+
+El reporte HTML se genera automáticamente (por el archivo pytest.ini) como `reporte.html`.
+
+## Casos de prueba
+- **Login:** valida redirección a `/inventory.html` y título "Swag Labs"
+- **Catálogo:** verifica título, productos visibles, elementos de UI y datos del primer producto
+- **Carrito:** agrega producto, verifica contador y que el ítem aparezca en el carrito
