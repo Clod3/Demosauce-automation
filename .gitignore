@@ -6,4 +6,4 @@ reports/
 .idea/
 .vscode/
 .env
-report.html
+reports/
