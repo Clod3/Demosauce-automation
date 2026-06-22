@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import pytest
-from utils.LoginPage import login
+##from utils.LoginPage import login
 
 #Login
 # Test de login validación de login exitoso

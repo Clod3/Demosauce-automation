@@ -2,22 +2,25 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 import pytest
 
-@pytest.fixture
-def driver_logged(login_in_driver):
-    driver = login_in_driver
-    return driver
+from page.inventory_page import InventoryPage
+from page.login_page import LoginPage
 
 def test_inventory_title(driver_logged):
-    titulo = driver_logged.title
-    assert titulo == "Swag Labs", "El titulo de la pagina a la que se accede no es correcto"
+    inventory_page = InventoryPage(driver_logged)
 
+    titulo = inventory_page.obtener_titulo()
+    assert titulo == "Swag Labs", "El titulo de la pagina no es correcto"
+
+@pytest.mark.smoke
 def test_productos_visibles(driver_logged):
-    productos = driver_logged.find_elements(By.CLASS_NAME,"inventory_item")
+    inventory_page = InventoryPage(driver_logged)
+
+    productos = inventory_page.obtener_productos()
     assert len(productos) > 0
 
 def test_ui_elements(driver_logged):
-    menu = driver_logged.find_element(By.ID, "react-burger-menu-btn")
-    filtro = driver_logged.find_element(By.CLASS_NAME, "product_sort_container")
+    inventory_page = InventoryPage(driver_logged)
 
-    assert menu.is_displayed(), "El icono del menu no está presente en la pagina"
-    assert filtro.is_displayed(), "El filtro del catalogo no está presente en la pagina"
+    assert inventory_page.menu_visible(), "El menu no está presente en la pagina"
+
+    assert inventory_page.filtro_visible(), "El filtro no está presente en la pagina"
