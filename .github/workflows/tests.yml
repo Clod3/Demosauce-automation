@@ -1,3 +1,4 @@
+yaml
 name: Tests automatizados
 
 on:
@@ -13,6 +14,11 @@ jobs:
       - name: Descargar repositorio
         uses: actions/checkout@v4
 
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          
       - name: Configurar python
         uses: actions/setup-python@v5
         with:
@@ -24,7 +30,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Ejecutar pruebas
-        run: pytest
+        run: pytest --html=report.html --self-contained-html
 
       - name: Guardar reporte como artefacto
         uses: actions/upload-artifact@v4
